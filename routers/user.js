@@ -13,7 +13,7 @@ router.get("/users", verifyTokenAndAdmin, async (req, res) => {
    const { page = 1, limit = 10 } = req.query;
    try {
       const users = await User.find()
-         .sort({ _id: -1 })
+         .sort({ createdAt: -1 })
          .limit(limit * 1)
          .skip((page - 1) * limit);
       const totalUsers = await User.countDocuments();

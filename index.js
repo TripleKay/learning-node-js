@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const authRoute = require("./routers/auth");
 const userRoute = require("./routers/user");
+const productRoute = require("./routers/product");
 const dotenv = require("dotenv");
 dotenv.config();
 const PORT = 3000;
@@ -20,6 +21,7 @@ mongoose
 app.use(express.json());
 app.use("/api/v1",userRoute);
 app.use('/api/v1',authRoute);
+app.use('/api/v1',productRoute);
 
 const listener = app.listen(process.env.PORT || 3000, () => {
    console.log(listener.address());
